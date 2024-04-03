@@ -1,10 +1,9 @@
-import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
+import { ErrorRequestHandler, Request, Response } from "express";
 
 const errorGlobalHandler: ErrorRequestHandler = (
-  err: any,
+  err: Error,
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   console.log(err.stack);
   res.status(500).json({ message: "Something went wrong" });

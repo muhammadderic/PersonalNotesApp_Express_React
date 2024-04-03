@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 
 const noteController = {
-  starting: async (req: Request, res: Response, next: NextFunction) => {
+  starting: async (req: Request, res: Response) => {
     res.send("Hello Deric");
   }
 }
