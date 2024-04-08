@@ -6,5 +6,9 @@ export const errorGlobalHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(500).json({ message: "Something went wrong" });
+  console.error(err);
+  res.status(500)
+    .json({
+      message: "Internal Server Error"
+    });
 };

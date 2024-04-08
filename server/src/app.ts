@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 
 import middleware from "./middlewares/middleware";
-import { errorGlobalHandler } from "./middlewares/errorGlobalHandler";
+import { errorGlobalHandler } from "./middlewares/errors/errorGlobalHandler";
 import router from "./routes";
 
 const app = express();
