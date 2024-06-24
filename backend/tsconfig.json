@@ -122,7 +122,4 @@
       "node"
     ]
   },
-  "include": [
-    "src"
-  ], // Specify the source directory for testing
 }
