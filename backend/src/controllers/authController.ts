@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 
 import User from "../models/userModel";
 
-// Create a new user
-export const createUser = async (req: Request, res: Response, next: NextFunction) => {
+// REGISTER A NEW USER
+export const userRegister = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userName, email, password, address, phone, avatar, userType } = req.body;
 
@@ -53,18 +53,48 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-// Get a note
-// export const getNote = async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const note = await authModel.findById(req.params.id);
-//     if (!note) {
-//       return res.status(404).json({ message: "Note not found" });
-//     }
-//     res.status(200).json(note);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+// USER LOG IN
+export const userLogin = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { email, password } = req.body;
+
+    // Input validation
+    if (!email || !password) {
+      return res.status(409).send({
+        success: false,
+        message: "Please provide email and password",
+      });
+    }
+
+    // Check user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(409).send({
+        success: false,
+        message: "Email not registered",
+      });
+    }
+
+    // Check password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(409).send({
+        success: false,
+        message: "Incorrect password",
+      });
+    }
+
+    // Success message
+    res.status(200).send({
+      success: true,
+      message: "User logged in successfully",
+      user,
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Create a note
 // export const createNote = async (req: Request, res: Response, next: NextFunction) => {

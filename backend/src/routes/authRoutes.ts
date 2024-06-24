@@ -1,7 +1,8 @@
 import express from "express";
 
 import {
-  createUser,
+  userRegister,
+  userLogin,
 } from "../controllers/authController";
 
 const router = express.Router();
@@ -13,7 +14,7 @@ const router = express.Router();
  * @body      { userName, email, password, address, phone, avatar, userType }
  * @response  201 Created - User registered successfully
  */
-router.post("/register", createUser);
+router.post("/register", userRegister);
 
 /**
  * @route     POST /login
@@ -22,6 +23,7 @@ router.post("/register", createUser);
  * @body      { email, password }
  * @response  201 Created - User logged in successfully
  */
+router.post("/login", userLogin);
 
 /**
  * @route     GET /logout
