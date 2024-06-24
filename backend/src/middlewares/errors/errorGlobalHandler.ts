@@ -10,4 +10,5 @@ export const errorGlobalHandler = (
     .json({
       message: "Internal Server Error"
     });
+  next();
 };

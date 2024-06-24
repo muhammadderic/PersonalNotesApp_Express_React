@@ -6,9 +6,9 @@ import middleware from "./middlewares/middleware";
 import { errorGlobalHandler } from "./middlewares/errors/errorGlobalHandler";
 import router from "./routes";
 
-const app = express();
-
 dotenv.config({ path: path.join(__dirname, "config", ".env") });
+
+const app = express();
 
 // Middlewares
 middleware(app);

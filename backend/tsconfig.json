@@ -119,17 +119,10 @@
     "strict": true,
     "noImplicitAny": true,
     "types": [
-      "jest",
       "node"
     ]
   },
   "include": [
     "src"
   ], // Specify the source directory for testing
-  "exclude": [
-    "./coverage",
-    "./dist",
-    "src/__tests__",
-    "jest.config.js"
-  ] // Exclude the node_modules directory
 }
